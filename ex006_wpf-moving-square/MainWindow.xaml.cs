@@ -20,26 +20,39 @@ namespace ex006_wpf_moving_square
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             const int squareStep = 10;
+            const int squareHeight = 140;
+            const double squareWidth = 119.9;
             
-            // ReSharper disable once ConvertIfStatementToSwitchStatement
             if (e.Key == Key.Up)
             {
-                Canvas.SetTop(Square, Canvas.GetTop(Square) - squareStep);
+                if (Canvas.GetTop(Square) != 0) 
+                {
+                    Canvas.SetTop(Square, Canvas.GetTop(Square) - squareStep);
+                }
             }
 
             if (e.Key == Key.Down)
             {
-                Canvas.SetTop(Square, Canvas.GetTop(Square) + squareStep);
+                if (Canvas.GetTop(Square) < Window.ActualHeight - squareHeight)
+                {
+                    Canvas.SetTop(Square, Canvas.GetTop(Square) + squareStep);
+                }
             }
 
             if (e.Key == Key.Left)
             {
-                Canvas.SetLeft(Square, Canvas.GetLeft(Square) - squareStep);
+                if (Canvas.GetLeft(Square) != 0)
+                {
+                    Canvas.SetLeft(Square, Canvas.GetLeft(Square) - squareStep);
+                }
             }
             
             if (e.Key == Key.Right)
             {
-                Canvas.SetLeft(Square, Canvas.GetLeft(Square) + squareStep);
+                if (Canvas.GetLeft(Square) < Window.ActualWidth - squareWidth)
+                {
+                    Canvas.SetLeft(Square, Canvas.GetLeft(Square) + squareStep);
+                }
             }
         }
     }
